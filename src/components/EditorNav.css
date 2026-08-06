@@ -1,0 +1,130 @@
+.editor-nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: var(--bg-elevated);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+}
+
+.titlebar {
+  height: var(--title-h);
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 16px;
+  border-bottom: 1px solid var(--border-soft);
+}
+
+.traffic-lights {
+  display: flex;
+  gap: 7px;
+  flex-shrink: 0;
+}
+
+.dot {
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  opacity: 0.85;
+}
+.dot-red { background: #f0787e; }
+.dot-yellow { background: #e5c07b; }
+.dot-green { background: #8fd19e; }
+
+.titlebar-path {
+  font-family: var(--font-mono);
+  font-size: 12.5px;
+  color: var(--text-muted);
+  flex: 1;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.menu-btn {
+  display: none;
+  flex-direction: column;
+  gap: 4px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px;
+}
+.menu-btn span {
+  width: 18px;
+  height: 2px;
+  background: var(--text-secondary);
+  border-radius: 2px;
+}
+
+.tab-bar {
+  height: var(--tab-h);
+  display: flex;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.tab-bar::-webkit-scrollbar { display: none; }
+
+.tab {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--text-muted);
+  background: transparent;
+  border: none;
+  border-right: 1px solid var(--border-soft);
+  padding: 0 18px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s ease, background 0.15s ease;
+}
+
+.tab:hover {
+  color: var(--text-secondary);
+  background: rgba(255, 255, 255, 0.02);
+}
+
+.tab-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.15s ease;
+}
+
+.tab-active {
+  color: var(--text-primary);
+  background: var(--bg);
+  box-shadow: inset 0 -2px 0 var(--blue);
+}
+.tab-active .tab-dot {
+  background: var(--blue);
+}
+
+@media (max-width: 640px) {
+  .menu-btn { display: flex; }
+  .tab-bar {
+    display: none;
+    flex-direction: column;
+    height: auto;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border);
+  }
+  .tab-bar-open { display: flex; }
+  .tab {
+    height: 44px;
+    border-right: none;
+    border-bottom: 1px solid var(--border-soft);
+    box-shadow: none !important;
+  }
+  .tab-active { box-shadow: inset 3px 0 0 var(--blue) !important; }
+}
